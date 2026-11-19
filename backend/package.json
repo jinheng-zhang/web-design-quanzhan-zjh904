@@ -1,0 +1,18 @@
+{
+  "_header": "姓名：zjh | 学号：904 | 时间：2026-11-19 | 大模型：CodeBuddy (Tencent Hunyuan Hy)",
+  "name": "zjh-fullstack-init",
+  "version": "1.0.0",
+  "private": true,
+  "description": "全栈项目初始化课堂案例 - zjh",
+  "main": "zjh_app.js",
+  "scripts": {
+    "dev": "node zjh_app.js",
+    "start": "node zjh_app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.0"
+  }
+}

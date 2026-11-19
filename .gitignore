@@ -1,0 +1,5 @@
+# 姓名：zjh | 学号：904 | 时间：2026-11-19 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+node_modules/
+.env
+*.log
+.DS_Store

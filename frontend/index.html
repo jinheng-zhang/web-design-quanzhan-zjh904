@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-19 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zjh 全栈新闻图文站 · 项目导航</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>全栈项目初始化</span></div>
+      <a class="zjh_back" href="http://localhost:8904/api/health" target="_blank">查看健康接口 ↗</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">高级网页设计 · 全栈项目初始化课堂案例</span>
+      <h1>从规则到数据接口<br>搭建一个全栈项目</h1>
+      <p>原生前端 + Express 后端 + MySQL 数据库，点击卡片进入各个功能页面，所有数据均来自本地后端接口。</p>
+      <div class="zjh_meta">
+        <span>姓名：zjh</span>
+        <span>学号：904</span>
+        <span>项目名称：zjh 全栈新闻图文站</span>
+        <span>项目类别：科技资讯 / 图文社区（模仿）</span>
+        <span>端口：8904</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="zjh_section-title"><h2>页面导航</h2><small>共 3 个功能页面</small></div>
+      <div class="zjh_nav-grid">
+        <a class="zjh_nav-card" href="database.html">
+          <div class="zjh_nav-index">PAGE 01</div>
+          <h3>数据库连接测试</h3>
+          <p>输入用户名与密码，调用 /api/db-test 验证 MySQL 连接状态。</p>
+          <div class="zjh_nav-arrow">进入页面 →</div>
+        </a>
+        <a class="zjh_nav-card" href="news.html">
+          <div class="zjh_nav-index">PAGE 02</div>
+          <h3>科技新闻列表</h3>
+          <p>读取 MySQL 表 zjh_news，展示标题、摘要、来源与发布时间。</p>
+          <div class="zjh_nav-arrow">进入页面 →</div>
+        </a>
+        <a class="zjh_nav-card" href="gallery.html">
+          <div class="zjh_nav-index">PAGE 03</div>
+          <h3>图文列表</h3>
+          <p>读取 MySQL 表 zjh_gallery，以上图下文卡片展示图文数据。</p>
+          <div class="zjh_nav-arrow">进入页面 →</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+</body>
+</html>
