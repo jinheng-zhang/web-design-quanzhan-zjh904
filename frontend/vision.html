@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图像识别 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+  <link rel="stylesheet" href="css/zjh_ai.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>图像识别</span></div>
+      <a class="zjh_back" href="index.html">← 返回项目导航</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">视觉大模型 · 图片转文字描述</span>
+      <h1>上传一张图片<br>让模型告诉你看到了什么</h1>
+      <p>图片以 base64 发送给后端，由后端带 Key 调用视觉模型 <code>Qwen/Qwen3-VL-8B-Instruct</code>。发送给大模型和接收自大模型的数据均输出到后端控制台。</p>
+      <div class="zjh_meta">
+        <span>接口：POST /api/vision</span>
+        <span>字段：image</span>
+        <span>格式：png / jpg / webp / gif / bmp</span>
+        <span>限制：8 MB 以内</span>
+      </div>
+    </section>
+
+    <section class="zjh_panel zjh_ai_card zjh_ai_single">
+      <div class="zjh_section-title"><h2>图片上传与识别</h2><small>VISION MODEL</small></div>
+      <div class="zjh_drop_zone">
+        <p>选择一张图片进行识别（模型要求宽高均大于 28 像素）</p>
+        <input type="file" id="zjh_image_file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp">
+      </div>
+      <button class="zjh_btn" type="button" id="zjh_vision_btn">开始识别 →</button>
+      <p class="zjh_status_line" id="zjh_vision_status"></p>
+
+      <div class="zjh_preview_area">
+        <img class="zjh_preview_img" id="zjh_image_preview" alt="图片预览" hidden>
+        <div class="zjh_result_box" id="zjh_vision_result">
+          <h3>识别结果</h3>
+          <p id="zjh_vision_text">上传图片后点击"开始识别"，这里会显示模型生成的描述。</p>
+        </div>
+      </div>
+      <span class="zjh_model_tag" id="zjh_vision_model">模型：Qwen/Qwen3-VL-8B-Instruct</span>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_vision.js" defer></script>
+</body>
+</html>

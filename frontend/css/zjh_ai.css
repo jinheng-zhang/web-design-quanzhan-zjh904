@@ -1,0 +1,261 @@
+/*
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+*/
+.zjh_ai_layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.zjh_ai_layout code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--zjh-accent);
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.92em;
+}
+
+.zjh_ai_card { padding: 22px; }
+.zjh_ai_card .zjh_section-title { margin-bottom: 16px; }
+
+.zjh_field {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--zjh-muted);
+}
+
+.zjh_field input[type="text"],
+.zjh_field input[type="file"] {
+  width: 100%;
+  margin-top: 7px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(6, 10, 26, 0.75);
+  color: var(--zjh-text);
+  font-size: 13px;
+  outline: none;
+}
+
+.zjh_field input[type="file"] { padding: 8px; cursor: pointer; }
+.zjh_field input:focus { border-color: var(--zjh-accent); }
+
+.zjh_status_line { min-height: 20px; margin: 8px 0; font-size: 12px; color: var(--zjh-accent); }
+.zjh_status_line.zjh_status_error { color: var(--zjh-error); }
+
+.zjh_doc_list { display: grid; gap: 10px; max-height: 420px; overflow-y: auto; margin-top: 14px; }
+
+.zjh_doc_item {
+  padding: 12px 13px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--zjh-line);
+}
+
+.zjh_doc_head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.zjh_doc_head strong { font-size: 13px; word-break: break-all; }
+
+.zjh_doc_delete {
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: transparent;
+  color: var(--zjh-error);
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.zjh_doc_item small { display: block; margin-top: 5px; color: var(--zjh-muted); font-size: 11px; }
+
+.zjh_chat_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--zjh-line);
+}
+
+.zjh_chat_head h2 { margin: 0; font-size: 18px; }
+.zjh_chat_head p { margin: 2px 0 0; color: var(--zjh-muted); font-size: 12px; }
+.zjh_chat_head select {
+  padding: 7px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(6, 10, 26, 0.8);
+  color: var(--zjh-text);
+  font-size: 12px;
+  outline: none;
+}
+
+.zjh_messages {
+  height: 380px;
+  overflow-y: auto;
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.zjh_msg {
+  max-width: 88%;
+  padding: 11px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.zjh_msg--user {
+  align-self: flex-end;
+  background: linear-gradient(110deg, var(--zjh-accent), var(--zjh-accent2));
+  color: #071022;
+  border-bottom-right-radius: 5px;
+}
+
+.zjh_msg--assistant {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--zjh-line);
+  border-bottom-left-radius: 5px;
+}
+
+.zjh_msg--error {
+  align-self: flex-start;
+  color: var(--zjh-error);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  font-size: 13px;
+}
+
+.zjh_sources { align-self: flex-start; max-width: 92%; display: grid; gap: 6px; }
+
+.zjh_source_item {
+  padding: 8px 11px;
+  border-radius: 10px;
+  background: rgba(110, 231, 255, 0.06);
+  border: 1px dashed rgba(110, 231, 255, 0.35);
+  color: var(--zjh-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.zjh_source_item strong { color: var(--zjh-accent); }
+
+.zjh_thinking {
+  display: none;
+  padding: 4px 0 10px;
+  color: var(--zjh-accent);
+  font-size: 13px;
+}
+
+.zjh_thinking--show { display: block; }
+
+.zjh_quick { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+.zjh_quick button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(110, 231, 255, 0.06);
+  color: var(--zjh-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.zjh_quick button:hover { color: var(--zjh-accent); border-color: var(--zjh-accent); }
+
+.zjh_input_row { display: flex; gap: 12px; align-items: flex-end; }
+
+.zjh_input_row textarea {
+  flex: 1;
+  min-height: 44px;
+  max-height: 120px;
+  resize: vertical;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(6, 10, 26, 0.75);
+  color: var(--zjh-text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.zjh_input_row textarea:focus { border-color: var(--zjh-accent); }
+
+.zjh_ai_single { max-width: 860px; margin: 0 auto; }
+
+.zjh_drop_zone {
+  margin: 16px 0;
+  padding: 26px 18px;
+  border: 2px dashed rgba(110, 231, 255, 0.35);
+  border-radius: 16px;
+  text-align: center;
+  background: rgba(110, 231, 255, 0.04);
+}
+
+.zjh_drop_zone input[type="file"] {
+  margin: 12px 0 0;
+  color: var(--zjh-text);
+  font-size: 13px;
+}
+
+.zjh_drop_zone p { margin: 0; color: var(--zjh-muted); font-size: 13px; }
+
+.zjh_preview_area {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.zjh_preview_img {
+  width: 240px;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.zjh_audio_player { width: 100%; max-width: 380px; margin-top: 12px; }
+
+.zjh_result_box {
+  flex: 1;
+  min-width: 240px;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(255, 255, 255, 0.04);
+  min-height: 150px;
+}
+
+.zjh_result_box h3 { margin: 0 0 10px; font-size: 15px; color: var(--zjh-accent); }
+.zjh_result_box p { margin: 0; white-space: pre-wrap; word-break: break-word; line-height: 1.8; font-size: 14px; }
+.zjh_result_box.zjh_result_error { border-color: rgba(248, 113, 113, 0.4); }
+.zjh_result_box.zjh_result_error h3 { color: var(--zjh-error); }
+
+.zjh_model_tag {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(110, 231, 255, 0.08);
+  border: 1px solid var(--zjh-line);
+  color: var(--zjh-accent);
+  font-size: 11px;
+}
+
+@media (max-width: 820px) {
+  .zjh_ai_layout { grid-template-columns: 1fr; }
+  .zjh_messages { height: 320px; }
+}

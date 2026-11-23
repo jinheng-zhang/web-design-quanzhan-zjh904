@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语音识别 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+  <link rel="stylesheet" href="css/zjh_ai.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>语音识别</span></div>
+      <a class="zjh_back" href="index.html">← 返回项目导航</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">七牛 Qwen-Audio-3.0-ASR-Flash · 语音转文字</span>
+      <h1>上传一段语音<br>把它变成可以复制的文字</h1>
+      <p>音频在后端转成 data URI，使用七牛的 <code>qwen/qwen-audio-3.0-asr-flash</code> 模型转写。发送给大模型和接收自大模型的数据均输出到后端控制台。</p>
+      <div class="zjh_meta">
+        <span>接口：POST /api/asr</span>
+        <span>字段：audio</span>
+        <span>格式：wav / mp3 / ogg / m4a / webm</span>
+        <span>建议时长：5 分钟以内</span>
+      </div>
+    </section>
+
+    <section class="zjh_panel zjh_ai_card zjh_ai_single">
+      <div class="zjh_section-title"><h2>音频上传与转写</h2><small>ASR MODEL</small></div>
+      <div class="zjh_drop_zone">
+        <p>选择一段音频文件（可先播放试听再转写）</p>
+        <input type="file" id="zjh_audio_file" accept="audio/*">
+        <audio class="zjh_audio_player" id="zjh_audio_preview" controls hidden></audio>
+      </div>
+      <button class="zjh_btn" type="button" id="zjh_asr_btn">开始转写 →</button>
+      <p class="zjh_status_line" id="zjh_asr_status"></p>
+
+      <div class="zjh_preview_area">
+        <div class="zjh_result_box" id="zjh_asr_result">
+          <h3>转写文字</h3>
+          <p id="zjh_asr_text">上传音频后点击"开始转写"，这里会显示识别出的文字。</p>
+        </div>
+      </div>
+      <span class="zjh_model_tag" id="zjh_asr_model">模型：qwen/qwen-audio-3.0-asr-flash</span>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_asr.js" defer></script>
+</body>
+</html>

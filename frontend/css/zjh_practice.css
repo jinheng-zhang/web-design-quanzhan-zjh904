@@ -1,0 +1,220 @@
+/*
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+*/
+.zjh_page--wide { max-width: 1180px; }
+
+/* 顶部导览 */
+.zjh_p_toc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--zjh-panel);
+  border: 1px solid var(--zjh-line);
+  backdrop-filter: blur(12px);
+  margin-bottom: 26px;
+}
+
+.zjh_p_toc a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  border-radius: 14px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.zjh_p_toc a:hover { border-color: var(--zjh-accent); transform: translateY(-3px); }
+
+.zjh_p_toc b {
+  font-size: 18px;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--zjh-accent), var(--zjh-accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.zjh_p_toc span { font-size: 14px; }
+
+/* 实践分区 */
+.zjh_p_step {
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--zjh-panel);
+  border: 1px solid var(--zjh-line);
+  backdrop-filter: blur(12px);
+  margin-bottom: 24px;
+  scroll-margin-top: 24px;
+}
+
+.zjh_p_step-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--zjh-line);
+  margin-bottom: 18px;
+}
+
+.zjh_p_step-num {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #071022;
+  background: linear-gradient(135deg, var(--zjh-accent), var(--zjh-accent2));
+}
+
+.zjh_p_step-head h2 { margin: 0; font-size: 21px; line-height: 1.4; }
+.zjh_p_step-head p { margin: 6px 0 0; color: var(--zjh-muted); font-size: 13.5px; }
+
+.zjh_p_facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.zjh_p_fact {
+  padding: 12px 15px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--zjh-line);
+}
+
+.zjh_p_fact span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--zjh-muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.zjh_p_fact strong { display: block; font-size: 13.5px; font-weight: 600; word-break: break-word; }
+
+.zjh_p_text { color: var(--zjh-muted); font-size: 14px; margin: 0 0 20px; }
+.zjh_p_text code,
+.zjh_p_quote code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--zjh-accent);
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.92em;
+}
+
+/* 截图 */
+.zjh_p_shots { display: grid; gap: 20px; }
+
+.zjh_p_shot {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--zjh-line);
+  background: rgba(4, 7, 18, 0.6);
+}
+
+.zjh_p_shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--zjh-line);
+}
+
+.zjh_p_dots { display: flex; gap: 5px; flex: none; }
+.zjh_p_dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+
+.zjh_p_url {
+  flex: 1;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--zjh-muted);
+  font-family: Consolas, Monaco, monospace;
+  font-size: 11.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zjh_p_zoom { display: block; cursor: zoom-in; }
+.zjh_p_zoom img { transition: filter 0.2s; }
+.zjh_p_zoom:hover img { filter: brightness(1.06); }
+
+.zjh_p_shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #060a1a;
+}
+
+.zjh_p_shot figcaption {
+  padding: 12px 16px;
+  border-top: 1px solid var(--zjh-line);
+  color: var(--zjh-muted);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.zjh_p_shot figcaption b { color: var(--zjh-text); font-weight: 600; }
+
+/* 结论与引用 */
+.zjh_p_result {
+  margin-top: 18px;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.07);
+}
+
+.zjh_p_result h4 { margin: 0 0 7px; font-size: 13.5px; color: var(--zjh-ok); }
+.zjh_p_result p { margin: 0; color: var(--zjh-muted); font-size: 13.5px; line-height: 1.75; }
+
+.zjh_p_quote {
+  margin: 0 0 18px;
+  padding: 13px 17px;
+  border-left: 3px solid var(--zjh-accent);
+  border-radius: 0 12px 12px 0;
+  background: rgba(110, 231, 255, 0.06);
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+
+.zjh_p_quote b { color: var(--zjh-accent); }
+
+/* 汇总表 */
+.zjh_p_table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.zjh_p_table th,
+.zjh_p_table td { padding: 10px 12px; border-bottom: 1px solid var(--zjh-line); text-align: left; vertical-align: top; }
+.zjh_p_table th { color: var(--zjh-muted); font-weight: 500; font-size: 12px; letter-spacing: 1px; }
+.zjh_p_table td code { color: var(--zjh-accent); font-family: Consolas, Monaco, monospace; font-size: 12px; }
+.zjh_p_table tr:last-child td { border-bottom: 0; }
+
+.zjh_p_note {
+  margin: 22px 0 0;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px dashed var(--zjh-line);
+  color: var(--zjh-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .zjh_p_step { padding: 20px; }
+  .zjh_p_step-head { gap: 12px; }
+  .zjh_p_step-num { width: 44px; height: 44px; border-radius: 13px; font-size: 15px; }
+  .zjh_p_step-head h2 { font-size: 18px; }
+  .zjh_p_table { font-size: 12px; }
+  .zjh_p_table th, .zjh_p_table td { padding: 8px; }
+}

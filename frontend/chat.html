@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 聊天与在线客服 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+  <link rel="stylesheet" href="css/zjh_chat.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>LLM 应用接入</span></div>
+      <a class="zjh_back" href="index.html">← 返回项目导航</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">LLM 应用跟做 · AI 聊天 + 在线客服</span>
+      <h1>给你的项目装上<br>一个会说话的"大脑"</h1>
+      <p>你的网页 → 你的后端 <code>/api/chat</code> → 大模型接口 → 答案原路返回。API Key 只保存在后端 <code>.env</code>，前端只负责把问题送过来。</p>
+      <div class="zjh_meta">
+        <span>接口：POST /api/chat</span>
+        <span>多轮对话：完整 messages</span>
+        <span>平台：硅基流动 / 七牛云 可切换</span>
+        <span>人设：AI 助手 / 美食街客服 可切换</span>
+      </div>
+    </section>
+
+    <div class="zjh_chat_layout">
+      <aside class="zjh_panel zjh_control_panel">
+        <div class="zjh_section-title"><h2>控制台</h2><small>SETTINGS</small></div>
+
+        <label class="zjh_field" for="zjh_provider_select">大模型平台
+          <select id="zjh_provider_select">
+            <option value="qiniu">七牛云 · qiniu/conatus-free</option>
+            <option value="siliconflow">硅基流动 · DeepSeek-V4-Flash</option>
+          </select>
+        </label>
+
+        <label class="zjh_field" for="zjh_mode_select">页面人设
+          <select id="zjh_mode_select">
+            <option value="chat">AI 聊天 · 有用的助手</option>
+            <option value="service">在线客服 · 中华美食街</option>
+          </select>
+        </label>
+
+        <div class="zjh_config_card">
+          <div><span>当前模型</span><strong id="zjh_model_label">qiniu/conatus-free</strong></div>
+          <div><span>当前人设</span><strong id="zjh_persona_label">AI 助手</strong></div>
+          <div><span>上下文消息</span><strong id="zjh_msg_count">0 条</strong></div>
+        </div>
+
+        <button class="zjh_btn zjh_clear_btn" id="zjh_clear_btn" type="button">清空对话记录</button>
+
+        <div class="zjh_safe_note">
+          <strong>Key 安全三原则</strong>
+          <p>① Key 只写后端 <code>backend/.env</code>；② <code>.env</code> 已在 <code>.gitignore</code> 中；③ 前端与 Git 里都搜不到 Key。</p>
+        </div>
+      </aside>
+
+      <section class="zjh_panel zjh_chat_panel">
+        <div class="zjh_chat_head">
+          <div>
+            <h2 id="zjh_chat_title">AI 助手在线</h2>
+            <p id="zjh_chat_subtitle">有什么可以帮你的？</p>
+          </div>
+          <span class="zjh_online_dot">● 连接正常</span>
+        </div>
+
+        <div class="zjh_messages" id="zjh_messages" aria-live="polite">
+          <div class="zjh_msg zjh_msg--assistant" id="zjh_welcome">你好！我是你的 AI 助手，试试问我一个问题吧。</div>
+        </div>
+
+        <div class="zjh_thinking" id="zjh_thinking">
+          <span class="zjh_thinking_dots"><i></i><i></i><i></i></span>
+          <span>正在思考…</span>
+        </div>
+
+        <div class="zjh_quick" id="zjh_quick"></div>
+
+        <div class="zjh_input_row">
+          <textarea id="zjh_input" rows="1" placeholder="输入你的问题，Enter 发送，Shift + Enter 换行"></textarea>
+          <button class="zjh_btn" id="zjh_send_btn" type="button">发送 →</button>
+        </div>
+        <p class="zjh_chat_tip" id="zjh_chat_tip">提示：连续问"我刚才问了什么"，可以验证多轮对话是否生效。</p>
+      </section>
+    </div>
+
+    <details class="zjh_panel zjh_lesson_box">
+      <summary>课堂任务对照（点击展开）</summary>
+      <div class="zjh_lesson_grid">
+        <div><strong>任务一 · 把 Key 藏好</strong><p>Key 只在后端 .env，前端调自己的 /api/chat；Git 中不含真实 Key。可能泄露的 3 处见后端 zjh_llm_notes.md。</p></div>
+        <div><strong>任务二 · 客服人设改造</strong><p>system 提示词限定只答营业时间、招牌菜、配送范围；5 个测试问题与解释见后端 zjh_llm_notes.md。</p></div>
+        <div><strong>任务三 · 多平台热切换</strong><p>左上角下拉框切换硅基流动 / 七牛，模型与 Key 在后端读取 .env，前端代码无需改动。</p></div>
+      </div>
+    </details>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_chat.js" defer></script>
+</body>
+</html>

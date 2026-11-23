@@ -3,3 +3,6 @@ node_modules/
 .env
 *.log
 .DS_Store
+
+# 本地工作目录（记忆、备份、会话数据），不提交
+.workbuddy/

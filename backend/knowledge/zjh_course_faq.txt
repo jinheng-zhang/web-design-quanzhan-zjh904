@@ -1,0 +1,35 @@
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+
+高级网页设计课程常见问题解答
+
+一、项目基本规则
+本课程全栈项目分为前端、后端、数据库三部分。前端目录为 frontend，使用原生 HTML、CSS、JavaScript，禁止引入任何第三方框架、库与 CDN 链接。
+后端目录为 backend，使用 Node.js 与 Express，采用 RESTful 与 MVC 风格组织代码，所有业务接口统一以 /api 为前缀。
+后端服务端口固定为学号后三位，本项目为 8904，静态资源由 express.static 托管 frontend 目录。
+数据库使用 MySQL，用户名 root，真实密码只写入 backend/.env 文件，不得出现在代码或文档中。
+
+二、命名与注释规范
+CSS 类名、JavaScript 变量名与函数名、数据库表名及字段名一律以 zjh_ 开头。
+每个文件头部都要包含统一注释块，内容包括姓名、学号、时间以及大模型名称。
+所有接口返回统一 JSON 格式：code 为 0 表示成功，非 0 表示失败；msg 为提示信息；data 为数据对象。
+
+三、记录文件要求
+zjh_prompt.md 位于项目根目录，每次向 AI 发出开发指令后都要追加记录，格式为时间、提示词全文、大模型名称。
+backend/zjh_interface.md 每次创建或修改接口后追加接口路径、HTTP 方法、请求参数、响应格式与修改时间。
+backend/zjh_database.md 每次建表、改表或插入数据后追加对应 SQL 语句，要求仅凭此文件即可在新机器上完整重建数据库。
+所有记录文件一律追加写入，禁止覆盖已有内容。
+
+四、启动与访问
+在 backend 目录执行 npm run dev，或双击项目根目录的 start.bat。
+启动成功后浏览器访问 http://localhost:8904/ ，不要直接双击 frontend 目录下的 HTML 文件，否则 /api 请求会失败。
+修改 backend/.env 后必须重启服务才能生效。
+如果端口 8904 被占用，可用 netstat -ano 查找占用进程并处理。
+
+五、大模型应用接入
+API Key 只能保存在后端 .env 中，前端通过自己的 /api/chat 接口转发请求，禁止把 Key 写进前端代码或提交到 Git。
+多轮对话需要维护 messages 数组，每轮把用户消息与 AI 回复都加入数组并完整发送给模型。
+主流平台兼容 OpenAI 接口格式，切换平台只需修改 baseURL、model、apiKey 三个值。
+常见错误码含义：401 为 Key 无效，402 为余额不足，404 为模型名或地址错误，429 为请求过于频繁，504 为响应超时。

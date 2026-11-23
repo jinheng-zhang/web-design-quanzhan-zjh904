@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识库 RAG 问答 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+  <link rel="stylesheet" href="css/zjh_ai.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>知识库 RAG</span></div>
+      <a class="zjh_back" href="index.html">← 返回项目导航</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">知识库管理 · 文档解析 · 检索增强问答</span>
+      <h1>上传你的文档<br>让大模型只按资料回答</h1>
+      <p>文档上传后自动解析、切块并写入 MySQL。提问时先检索相关片段，再连同问题一起发送给大模型，答案附带来源引用。支持 doc、docx、ppt、pptx、pdf、txt、md。</p>
+      <div class="zjh_meta">
+        <span>上传：POST /api/kb/upload</span>
+        <span>问答：POST /api/kb/ask</span>
+        <span>管理：GET /api/kb/list · DELETE /api/kb/:id</span>
+        <span>请求与响应均输出到后端控制台</span>
+      </div>
+    </section>
+
+    <div class="zjh_ai_layout">
+      <aside class="zjh_panel zjh_ai_card">
+        <div class="zjh_section-title"><h2>知识库管理</h2><small id="zjh_kb_total">0 份文档</small></div>
+        <form id="zjh_upload_form">
+          <label class="zjh_field">选择文档
+            <input type="file" id="zjh_kb_file" accept=".txt,.md,.doc,.docx,.ppt,.pptx,.pdf">
+          </label>
+          <label class="zjh_field">文档说明（选填）
+            <input type="text" id="zjh_kb_desc" placeholder="例如：门店配送细则">
+          </label>
+          <button class="zjh_btn" type="submit" id="zjh_upload_btn">上传并解析</button>
+        </form>
+        <p class="zjh_status_line" id="zjh_upload_status"></p>
+        <div class="zjh_doc_list" id="zjh_doc_list"></div>
+      </aside>
+
+      <section class="zjh_panel zjh_ai_card">
+        <div class="zjh_chat_head">
+          <div><h2>知识库问答</h2><p>只依据已上传资料回答，不编造</p></div>
+          <select id="zjh_kb_provider">
+            <option value="siliconflow">硅基流动</option>
+            <option value="qiniu">七牛云</option>
+          </select>
+        </div>
+        <div class="zjh_messages" id="zjh_kb_messages">
+          <div class="zjh_msg zjh_msg--assistant">你好！我是知识库问答助手。试着问"营业时间"、"招牌菜"或"端口是多少"。</div>
+        </div>
+        <div class="zjh_thinking" id="zjh_kb_thinking">正在检索知识库并生成答案…</div>
+        <div class="zjh_quick" id="zjh_kb_quick"></div>
+        <div class="zjh_input_row">
+          <textarea id="zjh_kb_question" rows="1" placeholder="输入问题，Enter 发送"></textarea>
+          <button class="zjh_btn" type="button" id="zjh_kb_send">提问 →</button>
+        </div>
+      </section>
+    </div>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_kb.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-19 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图文列表 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>图文列表</span></div>
+      <a class="zjh_back" href="index.html">← 返回首页</a>
+    </header>
+
+    <section class="zjh_panel">
+      <h2>图文卡片（数据来自 MySQL）</h2>
+      <p>上图下文网格布局，图片加载失败时显示渐变占位，不出现破图图标。</p>
+      <div class="zjh_api-url">接口：<a href="http://localhost:8904/api/gallery" target="_blank">GET http://localhost:8904/api/gallery</a></div>
+      <div class="zjh_section-title" style="margin-top:24px"><h2>图文列表</h2><small id="zjh_gallery_total">加载中…</small></div>
+      <div class="zjh_gallery-grid" id="zjh_gallery_grid"></div>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_gallery.js" defer></script>
+</body>
+</html>

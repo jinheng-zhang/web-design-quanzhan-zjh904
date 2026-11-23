@@ -1,0 +1,231 @@
+/*
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+*/
+.zjh_chat_layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.zjh_chat_layout code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--zjh-accent);
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.92em;
+}
+
+.zjh_control_panel { padding: 22px; }
+
+.zjh_field {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--zjh-muted);
+}
+
+.zjh_field select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 11px 12px;
+  border-radius: 11px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(6, 10, 26, 0.8);
+  color: var(--zjh-text);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.zjh_field select:focus { border-color: var(--zjh-accent); }
+
+.zjh_config_card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--zjh-line);
+}
+
+.zjh_config_card div { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; }
+.zjh_config_card span { color: var(--zjh-muted); }
+.zjh_config_card strong { color: var(--zjh-accent); font-weight: 600; text-align: right; word-break: break-all; }
+
+.zjh_clear_btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--zjh-text);
+  border: 1px solid var(--zjh-line);
+}
+
+.zjh_clear_btn:hover { border-color: var(--zjh-accent); }
+
+.zjh_safe_note {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  background: rgba(74, 222, 128, 0.07);
+  font-size: 12px;
+  color: var(--zjh-muted);
+}
+
+.zjh_safe_note strong { display: block; color: var(--zjh-ok); margin-bottom: 6px; font-size: 13px; }
+.zjh_safe_note p { margin: 0; line-height: 1.7; }
+
+.zjh_chat_panel { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+
+.zjh_chat_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--zjh-line);
+}
+
+.zjh_chat_head h2 { margin: 0; font-size: 18px; }
+.zjh_chat_head p { margin: 2px 0 0; color: var(--zjh-muted); font-size: 12px; }
+.zjh_online_dot { color: var(--zjh-ok); font-size: 12px; white-space: nowrap; }
+
+.zjh_messages {
+  height: 420px;
+  overflow-y: auto;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+.zjh_msg {
+  max-width: 80%;
+  padding: 11px 15px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  animation: zjh_msg_in 0.22s ease-out;
+}
+
+@keyframes zjh_msg_in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.zjh_msg--assistant {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--zjh-line);
+  border-bottom-left-radius: 5px;
+}
+
+.zjh_msg--user {
+  align-self: flex-end;
+  background: linear-gradient(110deg, var(--zjh-accent), var(--zjh-accent2));
+  color: #071022;
+  border-bottom-right-radius: 5px;
+}
+
+.zjh_msg--error {
+  align-self: flex-start;
+  color: var(--zjh-error);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  font-size: 13px;
+}
+
+.zjh_thinking {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 0 22px 8px;
+  color: var(--zjh-accent);
+  font-size: 13px;
+}
+
+.zjh_thinking--show { display: flex; }
+.zjh_thinking_dots { display: inline-flex; gap: 4px; }
+.zjh_thinking_dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--zjh-accent);
+  animation: zjh_blink 1s infinite ease-in-out;
+}
+.zjh_thinking_dots i:nth-child(2) { animation-delay: 0.2s; }
+.zjh_thinking_dots i:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes zjh_blink {
+  0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+
+.zjh_quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 22px 14px;
+}
+
+.zjh_quick button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(110, 231, 255, 0.06);
+  color: var(--zjh-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.zjh_quick button:hover { color: var(--zjh-accent); border-color: var(--zjh-accent); }
+
+.zjh_input_row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 16px 22px;
+  border-top: 1px solid var(--zjh-line);
+  background: rgba(4, 8, 22, 0.35);
+}
+
+.zjh_input_row textarea {
+  flex: 1;
+  min-height: 44px;
+  max-height: 120px;
+  resize: vertical;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--zjh-line);
+  background: rgba(6, 10, 26, 0.75);
+  color: var(--zjh-text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.zjh_input_row textarea:focus { border-color: var(--zjh-accent); }
+
+.zjh_chat_tip { margin: 0; padding: 0 22px 16px; color: var(--zjh-muted); font-size: 11px; }
+
+.zjh_lesson_box { cursor: pointer; }
+.zjh_lesson_box summary { font-size: 16px; font-weight: 600; }
+.zjh_lesson_grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 18px; }
+.zjh_lesson_grid div { padding: 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--zjh-line); }
+.zjh_lesson_grid strong { color: var(--zjh-accent); font-size: 14px; }
+.zjh_lesson_grid p { margin: 8px 0 0; color: var(--zjh-muted); font-size: 12px; line-height: 1.7; }
+
+@media (max-width: 820px) {
+  .zjh_chat_layout { grid-template-columns: 1fr; }
+  .zjh_messages { height: 360px; }
+  .zjh_msg { max-width: 92%; }
+}

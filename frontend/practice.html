@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-23 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM 实际操作痕迹 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+  <link rel="stylesheet" href="css/zjh_practice.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page zjh_page--wide">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>课堂实践 · LLM 实际操作痕迹</span></div>
+      <a class="zjh_back" href="index.html">← 返回项目导航</a>
+    </header>
+
+    <section class="zjh_hero">
+      <span class="zjh_badge">课堂实践 · 四项能力真机实录</span>
+      <h1>LLM 实际操作痕迹</h1>
+      <p>这一页不是设计稿，是四项能力在我本机上的真实操作记录：平台切换客服、知识库问答、图像识别、语音识别。每一步都配上当时的页面截图与结果说明，可以直接对着讲。</p>
+      <div class="zjh_meta">
+        <span>姓名：zjh</span>
+        <span>学号：904</span>
+        <span>端口：8904</span>
+        <span>截图时间：2026-11-23</span>
+        <span>记录方式：真机操作 + 页面截图</span>
+      </div>
+    </section>
+
+    <nav class="zjh_p_toc">
+      <a href="#step-1"><b>01</b><span>平台切换 AI 客服</span></a>
+      <a href="#step-2"><b>02</b><span>知识库 RAG</span></a>
+      <a href="#step-3"><b>03</b><span>图像识别</span></a>
+      <a href="#step-4"><b>04</b><span>语音识别</span></a>
+    </nav>
+
+    <!-- 01 平台切换客服 -->
+    <section class="zjh_p_step" id="step-1">
+      <div class="zjh_p_step-head">
+        <div class="zjh_p_step-num">01</div>
+        <div>
+          <h2>页面支持在「硅基流动 / 七牛」之间切换实现 AI 客服</h2>
+          <p>后端读取配置即可，前端只加一个下拉框；切换后现场继续提问，历史对话保留，照常对话。</p>
+        </div>
+      </div>
+
+      <div class="zjh_p_facts">
+        <div class="zjh_p_fact"><span>接口</span><strong>POST /api/chat</strong></div>
+        <div class="zjh_p_fact"><span>可选平台</span><strong>硅基流动 · 七牛云</strong></div>
+        <div class="zjh_p_fact"><span>客服人设</span><strong>中华美食街客服</strong></div>
+        <div class="zjh_p_fact"><span>切换方式</span><strong>下拉框只传平台名</strong></div>
+      </div>
+
+      <p class="zjh_p_text">两个平台的 <code>BaseURL</code>、<code>Model ID</code>、<code>API Key</code> 全部写在 <code>backend/.env</code> 里，前端下拉框只把 <code>provider</code> 名字传给后端，后端按白名单取出对应配置再转发。所以换平台不用改前端代码，更不用把 Key 暴露到浏览器。</p>
+
+      <div class="zjh_p_shots">
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/chat.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/01_chat_qiniu.png" target="_blank" rel="noopener"><img src="images/practice/01_chat_qiniu.png" alt="在七牛云平台下进行 AI 客服对话" loading="lazy"></a>
+          <figcaption><b>① 先在「七牛云 · qiniu/conatus-free」下对话。</b>左侧控制台显示大模型平台、页面人设和当前实际调用；右侧提问「用一句话解释什么是 API」，状态灯为「连接正常」。</figcaption>
+        </figure>
+
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/chat.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/02_chat_qiniu_detail.png" target="_blank" rel="noopener"><img src="images/practice/02_chat_qiniu_detail.png" alt="七牛云对话详情与 Key 安全三原则" loading="lazy"></a>
+          <figcaption><b>② 同一轮对话往下看。</b>上下文消息 2 条，输入框提示 Enter 发送、Shift + Enter 换行；左下角固定写着 Key 安全三原则：只写 <code>.env</code>、<code>.env</code> 已在 <code>.gitignore</code>、前端与 Git 里都搜不到 Key。</figcaption>
+        </figure>
+
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/chat.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/03_chat_siliconflow.png" target="_blank" rel="noopener"><img src="images/practice/03_chat_siliconflow.png" alt="切换到硅基流动后继续对话" loading="lazy"></a>
+          <figcaption><b>③ 当场把下拉框切到「硅基流动 · DeepSeek-V4-Flash」。</b>页面提示「已切换到「硅基流动」，上下文对话已保留，可以继续提问。」上面两条消息一条没丢，接着问下一句就行。</figcaption>
+        </figure>
+      </div>
+
+      <div class="zjh_p_result">
+        <h4>切换验证通过</h4>
+        <p>换平台只动后端配置和下拉框选项，前端逻辑一行没改；提示语明确写出「上下文对话已保留」，说明多轮 <code>messages</code> 没有被清空——这就是「切换后照常对话」的证据。</p>
+      </div>
+    </section>
+
+    <!-- 02 知识库 -->
+    <section class="zjh_p_step" id="step-2">
+      <div class="zjh_p_step-head">
+        <div class="zjh_p_step-num">02</div>
+        <div>
+          <h2>完成知识库实现：自己上传文件，验证知识库功能</h2>
+          <p>上传 → 解析 → 切块入库 → 检索 → 只按资料作答，答案后面附上引用的片段。</p>
+        </div>
+      </div>
+
+      <div class="zjh_p_facts">
+        <div class="zjh_p_fact"><span>上传接口</span><strong>POST /api/kb/upload</strong></div>
+        <div class="zjh_p_fact"><span>问答接口</span><strong>POST /api/kb/ask</strong></div>
+        <div class="zjh_p_fact"><span>支持格式</span><strong>doc / docx / ppt / pptx / pdf / txt / md</strong></div>
+        <div class="zjh_p_fact"><span>当前知识库</span><strong>8 份文档</strong></div>
+      </div>
+
+      <p class="zjh_p_text">文档上传后由 <code>officeparser</code>（Office 系）和 <code>pdf-parse</code>（PDF）解析正文，按 600 字切块写入 MySQL 的 <code>zjh_kb_chunk</code> 表。提问时先做中文二元组加权检索、取相关度最高的 3 段，再连同问题一起发给大模型；system 里写死「只依据资料回答，不编造」，所以模型说不出资料里没有的东西。</p>
+
+      <div class="zjh_p_shots">
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/kb.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/04_kb_list.png" target="_blank" rel="noopener"><img src="images/practice/04_kb_list.png" alt="知识库管理：上传与文档列表" loading="lazy"></a>
+          <figcaption><b>① 知识库管理。</b>左边是上传区（选择文档 + 文档说明 + 上传并解析），下面是已入库的 8 份文档：服务手册、课程 FAQ、配送政策、菜单价格、退换政策等，每份都标注了格式、片段数和字符数。</figcaption>
+        </figure>
+
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/kb.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/05_kb_answer.png" target="_blank" rel="noopener"><img src="images/practice/05_kb_answer.png" alt="知识库问答结果与来源引用" loading="lazy"></a>
+          <figcaption><b>② 提问「有哪些招牌菜？」。</b>回答引用了价格与菜名，下面挂着三条来源片段，每条都标出文件名、片段序号、匹配分和原文摘要。</figcaption>
+        </figure>
+      </div>
+
+      <div class="zjh_p_result">
+        <h4>回答确实来自我上传的资料</h4>
+        <p>答案原文：「根据资料，招牌菜有酸橘鲷鱼（38元）、麻婆豆腐（22元）、小笼包（18元一笼8只）和宫保鸡丁（32元）。依据的是【资料1】【来源：zjh_service_manual.txt】」。价格、菜名、来源文件都能和左边的文档列表对上，不是模型凭空生成的。</p>
+      </div>
+    </section>
+
+    <!-- 03 图像识别 -->
+    <section class="zjh_p_step" id="step-3">
+      <div class="zjh_p_step-head">
+        <div class="zjh_p_step-num">03</div>
+        <div>
+          <h2>图像识别：上传图片，测试图片识别功能</h2>
+          <p>图片转成 base64 交给后端，由视觉模型返回一段中文描述。</p>
+        </div>
+      </div>
+
+      <div class="zjh_p_facts">
+        <div class="zjh_p_fact"><span>接口</span><strong>POST /api/vision</strong></div>
+        <div class="zjh_p_fact"><span>视觉模型</span><strong>Qwen/Qwen3-VL-8B-Instruct</strong></div>
+        <div class="zjh_p_fact"><span>入参</span><strong>image（base64）</strong></div>
+        <div class="zjh_p_fact"><span>模型来源</span><strong>硅基流动</strong></div>
+      </div>
+
+      <p class="zjh_p_text">前端把选中的图片读成 base64 放进请求体，后端带上 Key 调视觉模型。发送给大模型和接收自大模型的数据都会打印到后端控制台，图片 base64 会自动截断，不会刷屏。</p>
+
+      <div class="zjh_p_shots">
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/vision.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/06_vision_upload.png" target="_blank" rel="noopener"><img src="images/practice/06_vision_upload.png" alt="图像识别页面上传图片" loading="lazy"></a>
+          <figcaption><b>① 上传一张图片。</b>选中的是本地文件 <code>a1.jpg</code>（模型要求宽高均大于 28 像素），点「开始识别」后状态变为「识别成功」。</figcaption>
+        </figure>
+
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/vision.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/07_vision_result.png" target="_blank" rel="noopener"><img src="images/practice/07_vision_result.png" alt="图像识别结果：小说封面描述" loading="lazy"></a>
+          <figcaption><b>② 识别结果。</b>左边是原图，右边是模型写的中文描述，底部标签标注了实际调用的模型 <code>Qwen/Qwen3-VL-8B-Instruct</code>。</figcaption>
+        </figure>
+      </div>
+
+      <blockquote class="zjh_p_quote">
+        <b>模型原话：</b>「这是一张小说封面图，主体是醒目的白色大字“省长的女婿”，字体粗犷有力，背景为深红色调，营造出紧张、悬疑的氛围。封面顶部有“NOKU”字样，下方有小字副标题：是人生的蜕变，还是命运的捉弄？他竟打开了梦寐以求的权力之门。整体设计以红黑为主色调，视觉冲击力强，暗示故事涉及权力、欲望与人性挣扎，符合都市言情或官场小说的风格。」
+      </blockquote>
+
+      <div class="zjh_p_result">
+        <h4>文字、颜色、风格都说对了</h4>
+        <p>标题文字、顶部角标、副标题、主色调、题材判断全部命中，说明图片确实送到了视觉模型，而不是走了什么假数据。</p>
+      </div>
+    </section>
+
+    <!-- 04 语音识别 -->
+    <section class="zjh_p_step" id="step-4">
+      <div class="zjh_p_step-head">
+        <div class="zjh_p_step-num">04</div>
+        <div>
+          <h2>语音识别：上传语音，测试语音转文字功能</h2>
+          <p>使用七牛 Qwen-Audio-3.0-ASR-Flash，把一段近 3 分半的录音一次性转成文字。</p>
+        </div>
+      </div>
+
+      <div class="zjh_p_facts">
+        <div class="zjh_p_fact"><span>接口</span><strong>POST /api/asr</strong></div>
+        <div class="zjh_p_fact"><span>模型</span><strong>qwen/qwen-audio-3.0-asr-flash</strong></div>
+        <div class="zjh_p_fact"><span>上游端点</span><strong>/v1/audio/transcriptions</strong></div>
+        <div class="zjh_p_fact"><span>测试文件</span><strong>计算机24009-辨音录.m4a</strong></div>
+      </div>
+
+      <p class="zjh_p_text">音频以 multipart 上传，后端转成 OpenAI 标准的 <code>file</code> + <code>model</code> 转写请求再发给七牛。这里踩过一个坑：该模型不能走 <code>/v1/chat/completions</code> 的 <code>input_audio</code>，那样会返回 502；换成 <code>/v1/audio/transcriptions</code> 才正常。</p>
+
+      <div class="zjh_p_shots">
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/asr.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/08_asr_upload.png" target="_blank" rel="noopener"><img src="images/practice/08_asr_upload.png" alt="语音识别页面上传音频" loading="lazy"></a>
+          <figcaption><b>① 先上传、再试听。</b>播放器显示这段录音时长 3:11，确认能正常播放后点「开始转写」。</figcaption>
+        </figure>
+
+        <figure class="zjh_p_shot">
+          <div class="zjh_p_shot-bar">
+            <span class="zjh_p_dots"><i></i><i></i><i></i></span>
+            <span class="zjh_p_url">localhost:8904/asr.html</span>
+          </div>
+          <a class="zjh_p_zoom" href="images/practice/09_asr_result.png" target="_blank" rel="noopener"><img src="images/practice/09_asr_result.png" alt="语音转写结果" loading="lazy"></a>
+          <figcaption><b>② 转写结果。</b>整段面试录音转成了带标点的中文，页脚标注模型 <code>qwen/qwen-audio-3.0-asr-flash</code> 与音频时长 191 秒。</figcaption>
+        </figure>
+      </div>
+
+      <div class="zjh_p_result">
+        <h4>长音频一次转写完成</h4>
+        <p>191 秒的录音不需要切片，直接一次返回；口语里的「嗯、哪、然后」也保留了下来，可以据此判断是真实转写而不是套模板。这段文字是我和技术面试官的对话录音，转写后连技术细节（删除车辆信息、接口请求参数、token、生命周期）都对得上。</p>
+      </div>
+    </section>
+
+    <!-- 汇总 -->
+    <section class="zjh_p_step">
+      <div class="zjh_p_step-head">
+        <div class="zjh_p_step-num">∑</div>
+        <div>
+          <h2>四项能力汇总</h2>
+          <p>同一套后端、同一个端口，四种形态的大模型调用。</p>
+        </div>
+      </div>
+      <table class="zjh_p_table">
+        <thead>
+          <tr><th>能力</th><th>接口</th><th>模型 / 平台</th><th>结果</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI 客服 · 平台切换</td>
+            <td><code>POST /api/chat</code></td>
+            <td>DeepSeek-V4-Flash / qiniu conatus-free</td>
+            <td>切换后历史保留，继续对话正常</td>
+          </tr>
+          <tr>
+            <td>知识库 RAG</td>
+            <td><code>/api/kb/upload</code> · <code>/api/kb/ask</code></td>
+            <td>同上（可切换）</td>
+            <td>8 份文档，答案带来源引用</td>
+          </tr>
+          <tr>
+            <td>图像识别</td>
+            <td><code>POST /api/vision</code></td>
+            <td>Qwen/Qwen3-VL-8B-Instruct</td>
+            <td>返回中文描述，文字与风格均命中</td>
+          </tr>
+          <tr>
+            <td>语音识别</td>
+            <td><code>POST /api/asr</code></td>
+            <td>qwen/qwen-audio-3.0-asr-flash</td>
+            <td>191 秒录音一次转写完成</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="zjh_p_note">原始截图保存在项目根目录的 <code>llm/</code> 文件夹，页面里引用的是复制到 <code>frontend/images/practice/</code> 的版本；点击截图可查看原尺寸。所有 Key 都只在后端 <code>backend/.env</code>，页面上、代码里、Git 记录里都不出现。</p>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904 · 高级网页设计 2026-2027-1</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+</body>
+</html>

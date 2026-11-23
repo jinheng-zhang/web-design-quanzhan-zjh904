@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+姓名：zjh | 学号：904 |
+时间：2026-11-19 | 大模型：CodeBuddy (Tencent Hunyuan Hy)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据库连接测试 · zjh 全栈项目</title>
+  <link rel="stylesheet" href="css/zjh_style.css">
+</head>
+<body>
+  <canvas id="zjh_bg_canvas"></canvas>
+  <main class="zjh_page">
+    <header class="zjh_topbar">
+      <div class="zjh_brand"><span class="zjh_brand-mark">zjh</span><span>数据库连接测试</span></div>
+      <a class="zjh_back" href="index.html">← 返回首页</a>
+    </header>
+
+    <section class="zjh_panel">
+      <h2>MySQL 连接测试</h2>
+      <p>输入数据库用户名与密码，后端使用 mysql2 尝试连接，连接成功会返回 MySQL 版本。</p>
+      <div class="zjh_api-url">接口：<a href="http://localhost:8904/api/db-test" target="_blank">POST http://localhost:8904/api/db-test</a></div>
+
+      <form class="zjh_form" id="zjh_db_form" style="margin-top:20px">
+        <label>用户名
+          <input type="text" id="zjh_db_username" value="root" autocomplete="username">
+        </label>
+        <label>密码（与 backend/.env 中的 DB_PASSWORD 一致）
+          <input type="password" id="zjh_db_password" placeholder="请输入数据库密码" autocomplete="current-password">
+        </label>
+        <button class="zjh_btn" type="submit">测试连接</button>
+      </form>
+
+      <div class="zjh_result" id="zjh_db_result"></div>
+    </section>
+
+    <footer class="zjh_footer">姓名：zjh · 学号：904 · 端口：8904</footer>
+  </main>
+  <script src="js/zjh_main.js" defer></script>
+  <script src="js/zjh_database.js" defer></script>
+</body>
+</html>
