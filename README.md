@@ -10,6 +10,7 @@
 - 端口：8904（学号后三位）
 - 项目名称：zjh 全栈新闻图文站
 - 项目类别：课程作业 / 全栈 Web 应用（模仿科技资讯与图文社区）
+- 代码仓库：<https://github.com/jinheng-zhang/web-design-quanzhan-zjh904>
 
 ## 技术栈
 - 前端：原生 HTML / CSS / JavaScript（无任何第三方库与 CDN）
